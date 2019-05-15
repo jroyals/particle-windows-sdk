@@ -36,4 +36,15 @@ namespace Particle.SDK.Models
         [JsonProperty("coreInfo")]
         public CoreInfo CoreInfo { get; set; }
     }
+    
+    /// <summary>
+    /// Helper class from Particle Ping response
+    /// </summary>
+    public class ParticlePingResponse
+    {
+        [JsonProperty("online")]
+        public bool Online { get; set; }
+        [JsonProperty("ok")]
+        public bool Ok { get; set; }
+    }
 }

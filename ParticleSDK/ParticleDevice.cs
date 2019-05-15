@@ -407,6 +407,26 @@ namespace Particle.SDK
                 return null;
             }
         }
+        
+        /// <summary>
+        /// Ping the device
+        /// </summary>
+        /// <param name="variable">Variable name</param>
+        /// <returns>Returns a ParticleVariableResponse</returns>
+        public async Task<ParticlePingResponse> PingAsync()
+        {
+            try
+            {
+                var jsonSerializerSettings = new JsonSerializerSettings() { DateTimeZoneHandling = DateTimeZoneHandling.Local };
+
+                var responseContent = await particleCloud.PutDataAsync($"{ParticleCloud.ParticleApiVersion}/{ParticleCloud.ParticleApiPathDevices}/{Id}/ping");
+                return JsonConvert.DeserializeObject<ParticlePingResponse>(responseContent, jsonSerializerSettings);
+            }
+            catch
+            {
+                return null;
+            }
+        }
 
         /// <summary>
         /// Check device functions to see if it's compatible with tinker
